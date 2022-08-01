@@ -1,8 +1,20 @@
-package model;
+package entity.constante;
 
-public class Materias {
+public enum Materia {
 
-    private int qtd_materias;
-    private String tipo;
+    M2(2),
+
+    M5(5),
+
+    M10(10);
+
     private double fator;
+
+    Materia(double fator) {
+        this.fator = fator;
+    }
+
+    public double getFator() {
+        return fator;
+    }
 }
