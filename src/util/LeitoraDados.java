@@ -44,15 +44,30 @@ public class LeitoraDados {
         return livro;
     }
 
-    /**
-     * Ler os dados do caderno a ser cadastrado.
-     *
-     * @return Um caderno a partir dos dados de entrada
-     */
-    //TODO Método para ler o caderno
+    public static Caderno lerCaderno() {
+
+        System.out.println("Cadastrando caderno...");
+        Caderno caderno = new Caderno();
+
+        System.out.println("Digite o nome");
+        String nome = lerDado();
+        caderno.setNome(nome);
+
+        System.out.println("Digite a materia: M2, M5, M10");
+        String genero = lerDado();
+        caderno.setMateria(Materia.valueOf(genero.toUpperCase()));
+
+        System.out.println("Digite o preço(padrão 0.0)");
+        String preco = lerDado();
+        caderno.setPreco(Double.parseDouble(preco));
+
+        return caderno;
+
+    }
+
     public static Pedido lerPedido(Banco banco) {
 
-        ProdutoBusiness produtoNegocio = new ProdutoBusiness(banco);
+        ProdutoBusiness produtoBusiness = new ProdutoBusiness(banco);
 
         System.out.println("Cadastrando pedido...");
         Pedido pedido = new Pedido();
@@ -63,7 +78,7 @@ public class LeitoraDados {
             System.out.println("Digite o código do produto(livro/Caderno)");
             String codigo = lerDado();
 
-            Optional<Produto> resultado = produtoNegocio.consultar(codigo);
+            Optional<Produto> resultado = produtoBusiness.consultar(codigo);
             if (resultado.isPresent()) {
 
                 Produto produto = resultado.get();
@@ -77,7 +92,7 @@ public class LeitoraDados {
                 System.out.println("Produto inexistente. Escolha um produto válido");
             }
 
-            System.out.println("Deseja selecionar mais um produto? s/n");
+            System.out.println("Deseja selecionar outro produto? s/n");
             opcao = lerDado();
         } while ("s".equals(opcao));
 
@@ -107,26 +122,5 @@ public class LeitoraDados {
         cliente.setNome(nome);
         cliente.setCpf(cpf);
         return cliente;
-    }
-
-    public static Caderno lerCaderno() {
-
-        System.out.println("Cadastrando caderno...");
-        Caderno caderno = new Caderno();
-
-        System.out.println("Digite o nome");
-        String nome = lerDado();
-        caderno.setNome(nome);
-
-        System.out.println("Digite a materia: M2, M5, M10");
-        String genero = lerDado();
-        caderno.setMateria(Materia.valueOf(genero.toUpperCase()));
-
-        System.out.println("Digite o preço(padrão 0.0)");
-        String preco = lerDado();
-        caderno.setPreco(Double.parseDouble(preco));
-
-        return caderno;
-
     }
 }

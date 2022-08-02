@@ -37,18 +37,18 @@ public class Main {
 
             System.out.println("Selecione uma opção:");
             System.out.println("1 - Cadastrar Livro");
-            System.out.println("2 - Excluir Livro");
-            //TODO Desafio: Consultar Livro(nome)
-            System.out.println("3 - Cadastrar Caderno");
-            System.out.println("4 - Excluir Caderno");
-            //TODO Desafio: Consultar Caderno(matéria)
-            System.out.println("5 - Fazer pedido");
-            System.out.println("6 - Excluir pedido");
+            System.out.println("2 - Buscar Livro");
+            System.out.println("3 - Excluir Livro");
+            System.out.println("4 - Cadastrar Caderno");
+            System.out.println("5 - Buscar Caderno");
+            System.out.println("6 - Excluir Caderno");
+            System.out.println("7 - Fazer pedido");
             //TODO Desafio: Consultar Pedido(código)
-            System.out.println("7 - Listar produtos");
-            System.out.println("8 - Listar pedidos");
-            System.out.println("9 - Deslogar");
-            System.out.println("10 - Sair");
+            System.out.println("9 - Excluir pedido");
+            System.out.println("10 - Listar produtos");
+            System.out.println("11 - Listar pedidos");
+            System.out.println("12 - Deslogar");
+            System.out.println("0 - Sair");
 
             opcao = LeitoraDados.lerDado();
 
@@ -58,18 +58,30 @@ public class Main {
                     produtoBusiness.salvar(livro);
                     break;
                 case "2":
+                    System.out.println("Digite o Nome do livro");
+                    String nome = LeitoraDados.lerDado();
+                    produtoBusiness.buscarPorNome(nome);
+                    break;
+                case "3":
                     System.out.println("Digite o código do livro");
                     String codigoLivro = LeitoraDados.lerDado();
                     produtoBusiness.excluir(codigoLivro);
                     break;
-                case "3":
+                case "4":
                     Caderno caderno = LeitoraDados.lerCaderno();
                     produtoBusiness.salvar(caderno);
                     break;
-                case "4":
-                    //TODO Excluir Caderno
-                    break;
                 case "5":
+                    System.out.println("Digite o Nome do caderno");
+                    nome = LeitoraDados.lerDado();
+                    produtoBusiness.buscarPorNome(nome);
+                    break;
+                case "6":
+                    System.out.println("Digite o código do Caderno");
+                    String codigoCaderno = LeitoraDados.lerDado();
+                    produtoBusiness.excluir(codigoCaderno);
+                    break;
+                case "7":
                     Pedido pedido = LeitoraDados.lerPedido(banco);
                     Optional<Cupom> cupom = LeitoraDados.lerCupom(banco);
 
@@ -79,22 +91,22 @@ public class Main {
                         pedidoBusiness.salvar(pedido);
                     }
                     break;
-                case "6":
+                case "9":
                     System.out.println("Digite o código do pedido");
                     String codigoPedido = LeitoraDados.lerDado();
                     pedidoBusiness.excluir(codigoPedido);
                     break;
-                case "7":
+                case "10":
                     produtoBusiness.listarTodos();
                     break;
-                case "8":
+                case "11":
                     //TODO Listar todos os Pedidos
                     break;
-                case "9":
+                case "12":
                     System.out.println(String.format("Volte sempre %s!", clienteLogado.getNome()));
                     clienteLogado = null;
                     break;
-                case "10":
+                case "0":
                     System.out.println("Aplicação encerrada.");
                     System.exit(0);
                     break;

@@ -3,6 +3,8 @@ package entity;
 public abstract class Produto {
 
     private String codigo;
+
+    private String nome;
     public double preco;
     public int quantidade;
 
@@ -30,7 +32,23 @@ public abstract class Produto {
         this.quantidade = quantidade;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public double calcularFrete() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Codigo='" + codigo + '\'' +
+                ", Nome='" + nome + '\'' +
+                ", Preco=" + preco +
+                ", Quantidade=" + quantidade;
     }
 }
