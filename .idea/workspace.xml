@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef32ce5d-22c5-4198-9c02-95d0725eb271" name="Changes" comment="">
+    <list default="true" id="ef32ce5d-22c5-4198-9c02-95d0725eb271" name="Changes" comment="Inserindo excluir do produto por posição">
       <change beforePath="$PROJECT_DIR$/src/business/ProdutoBusiness.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/business/ProdutoBusiness.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

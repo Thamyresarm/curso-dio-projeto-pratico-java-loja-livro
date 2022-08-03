@@ -9,18 +9,10 @@ public class ProdutoBusiness {
 
     private Banco bancoDados;
 
-    /**
-     * Construtor.
-     * @param banco Banco de dados para ter armazenar e ter acesso os produtos
-     */
     public ProdutoBusiness(Banco banco) {
         this.bancoDados = banco;
     }
 
-    /**
-     * Salva um novo produto(livro ou caderno) na loja.
-     * @param novoProduto Livro ou caderno que pode ser vendido
-     */
     public void salvar(Produto novoProduto) {
 
         String codigo = "PR%04d";
@@ -54,9 +46,9 @@ public class ProdutoBusiness {
        }
        if(produtoExclusao != -1){
            bancoDados.removerProduto(produtoExclusao);
-           System.out.printf("Produto excluido com sucesso.");
+           System.out.printf("Produto excluido com sucesso.\n");
        }else{
-           System.out.printf("Produto Inexistente");
+           System.out.printf("Produto Inexistente\n");
        }
     }
 
@@ -78,6 +70,15 @@ public class ProdutoBusiness {
 
             for (Produto produto: bancoDados.getProdutos()) {
                 System.out.println(produto.toString());
+            }
+        }
+    }
+    public void buscarPorNome(String nome) {
+        for (Produto produto : bancoDados.getProdutos()) {
+            if (produto.getNome().equalsIgnoreCase(nome)) {
+                System.out.println(produto.toString());
+            }else {
+                System.out.println("Produto não encontrado");
             }
         }
     }
