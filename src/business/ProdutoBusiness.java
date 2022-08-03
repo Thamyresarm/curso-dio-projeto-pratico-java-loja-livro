@@ -42,12 +42,22 @@ public class ProdutoBusiness {
         }
     }
 
-    /**
-     * Exclui um produto pelo código de cadastro.
-     * @param codigo Código de cadastro do produto
-     */
+    //excluindo por posição, implementar pelo equals e hascode
     public void excluir(String codigo) {
-        //TODO Implementar a exclusão
+       int produtoExclusao = -1;
+       for (int i = 0; i< bancoDados.getProdutos().length;i++){
+           Produto produto = bancoDados.getProdutos()[i];
+           if(produto.getCodigo().equals(codigo)){
+               produtoExclusao = i;
+               break;
+           }
+       }
+       if(produtoExclusao != -1){
+           bancoDados.removerProduto(produtoExclusao);
+           System.out.printf("Produto excluido com sucesso.");
+       }else{
+           System.out.printf("Produto Inexistente");
+       }
     }
 
     public Optional<Produto> consultar(String codigo) {
